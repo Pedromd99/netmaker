@@ -2,7 +2,7 @@
 set -e
 
 mkdir -p /etc/netmaker/config/environments
-wget -O /etc/netmaker/netmaker https://github.com/gravitl/netmaker/releases/download/latest/netmaker
+wget -O /etc/netmaker/netmaker https://github.com/gravitl/netmaker/releases/download/v0.14.6/netmaker
 chmod +x /etc/netmaker/netmaker
 
 cat >/etc/netmaker/config/environments/dev.yaml<<EOL
