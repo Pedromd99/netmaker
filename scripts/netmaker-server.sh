@@ -2,18 +2,19 @@
 set -e
 
 mkdir -p /etc/netmaker/config/environments
+mkdir /usr/sbin
 wget -O /etc/netmaker/netmaker https://github.com/gravitl/netmaker/releases/download/v0.15.0/netmaker
 chmod +x /etc/netmaker/netmaker
+cp /etc/netmaker/netmaker /usr/sbin/netmaker
 
-cat >/etc/netmaker/config/environments/dev.yaml<<EOL
+cat >/etc/netmaker/netmaker.yaml<<EOL
 server:
-  host:
+  server: ""
   apiport: "8081"
-  masterkey: "secretkey"
-  allowedorigin: "*"
-  restbackend: true            
-  agentbackend: true
-  dnsmode: "on"
+  apiconnection: ""
+  masterkey: "82eMwuSP9k58AC"
+  mqhost: "127.0.0.1"
+  mqport: "8883"
 EOL
 
 cat >/etc/systemd/system/netmaker.service<<EOL
@@ -25,8 +26,7 @@ After=network.target
 Type=simple
 Restart=on-failure
 
-WorkingDirectory=/etc/netmaker
-ExecStart=/etc/netmaker/netmaker
+ExecStart=/usr/sbin/netmaker -c /etc/netmaker/netmaker.yaml
 
 [Install]
 WantedBy=multi-user.target
