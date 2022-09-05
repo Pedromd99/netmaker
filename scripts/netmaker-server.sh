@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
 
-mkdir -p /etc/netmaker/config/environments
-mkdir /usr/sbin
+mkdir -p /etc/netmaker
 wget -O /etc/netmaker/netmaker https://github.com/gravitl/netmaker/releases/download/v0.15.0/netmaker
 chmod +x /etc/netmaker/netmaker
 cp /etc/netmaker/netmaker /usr/sbin/netmaker
@@ -15,6 +14,7 @@ server:
   masterkey: "82eMwuSP9k58AC"
   mqhost: "127.0.0.1"
   mqport: "8883"
+  sqlconn: "http://localhost:4001"
 EOL
 
 cat >/etc/systemd/system/netmaker.service<<EOL
