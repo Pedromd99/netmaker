@@ -2,7 +2,7 @@
 set -e
 
 mkdir -p /etc/netmaker
-wget -O /etc/netmaker/netmaker https://github.com/gravitl/netmaker/releases/download/v0.15.0/netmaker
+wget -O /etc/netmaker/netmaker https://github.com/gravitl/netmaker/releases/download/v0.16.0/netmaker
 chmod +x /etc/netmaker/netmaker
 cp /etc/netmaker/netmaker /usr/sbin/netmaker
 
